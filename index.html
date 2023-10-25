@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link rel="stylesheet" href="style2.css" />
+  </head>
+
+  <!-- 3kaime -->
+
+  <body>
+    <header class="header">
+      <!-- ヘッダーロゴ -->
+      <div class="logo">
+        <img src="icon.png" alt="icon" />
+      </div>
+      
+      </div>
+
+      <!-- ハンバーガーメニュー部分 -->
+      <div class="nav">
+        <!-- ハンバーガーメニューの表示・非表示を切り替えるチェックボックス -->
+        <input id="drawer_input" class="drawer_hidden" type="checkbox" />
+
+        <!-- ハンバーガーアイコン -->
+        <label for="drawer_input" class="drawer_open"><span></span></label>
+
+        <!-- メニュー -->
+        <nav class="nav_content">
+          <ul class="nav_list">
+            <hr>
+            <li class="current-page"><a href="./index.html">好きな車の写真をアップロードして探す <span></span> ➤</a></li>
+            <hr>
+            <li class="nav_item">
+              <a href="./se2.html">好みのデザインを選択して車を見つける <span></span> ➤</a>
+            </li> <hr>
+            <li class="nav_item">
+              <a href="./se.html">サイトトップ <span></span> ➤</a>
+            </li>
+            <hr>
+            <li class="nav_item">
+              <a href="./quote.html">画像などの引用について<span></span> ➤</a>
+            </li>
+            <hr>
+
+          </ul>
+
+        </nav>
+      </div>
+    </header>
+
+    
+    <div class="model_name">Teachable Machine Image Model</div>
+    <!-- <div class="likeCar">
+
+      <p>好きな車の写真を<br>
+        アップロードして探す</p>
+    
+        <img src="imgIcon.png" alt="" >
+    </div> -->
+   
+   
+    
+
+        <label class="">
+ <div class="file_src" >
+        <!-- <p>好きな車の写真を<br>
+          アップロードして探す</p>
+      
+          <img src="imgIcon.png" alt="" > -->
+          <span for=”id_img”><p>好きな車の写真を<br>
+           アップロードして探す</p>
+        
+            <img src="imgIcon.png" alt="" ></span> <br>
+    
+  </div> 
+
+  
+  <div class="center"><input  id=”id_img”  type="file" onchange="onFileSelected(event)" class="file_btn" /></div></label>
+  <img src="./icon/12690_color.png" alt="sakuraCar">
+  <div class="border"></div>
+
+<br>
+    <button type="button" onclick="init()" class="btn_none"></button>
+   <a href="#result_after" id="result_link"></a>
+    <div id="label-container"  ></div>
+
+
+<div class="result" id="result_after">
+   
+<div class="first_stage">
+    <a href="" class="uploaded-a"><img class="uploaded-image" src="" alt="" /></a>
+    <img src="./icon/8285_color.png" alt="pink_car">
+    <a href="" class="uploaded-a"><img class="uploaded-image" src="" alt="" /></a>
+</div>
+
+<h2 class="result_text">おすすめの車はこちら！</h2>
+    <div class="selectedImg">
+    <a href="" class="uploaded-a"><img class="uploaded-image" src="" alt="" /></a>
+    
+    <div class="selected">
+    <p>選んだ写真↓</p>
+    <img id="uploaded-image2" src="" alt="selected-image" />
+  </div>
+
+
+
+    <!-- <div class="second_stage"> -->
+    <a href="" class="uploaded-a"><img class="uploaded-image" src="" alt="" /></a>
+  </div>
+ <div class="thired_stage">
+    <a href="" class="uploaded-a"><img class="uploaded-image" src="" alt="" /></a>
+    <a href="" class="uploaded-a"><img class="uploaded-image" src="" alt="" /></a>
+  <!-- </div> -->
+  </div>
+
+  <a href="./quote.html" class="quote">画像などの引用について</a>
+</div>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+  
+
+    <!--
+    <script type="text/javascript">
+      const URL = 'https://teachablemachine.withgoogle.com/models/uM9BCKdzV/';
+
+      let model, labelContainer, maxPredictions;
+
+      // Load the image model
+      async function init() {
+        const modelURL = URL + 'model.json';
+        const metadataURL = URL + 'metadata.json';
+
+        // load the model and metadata
+        model = await tmImage.load(modelURL, metadataURL);
+        maxPredictions = model.getTotalClasses();
+
+        // append elements to the DOM
+        labelContainer = document.getElementById('label-container');
+        for (let i = 0; i < maxPredictions; i++) {
+          // and class labels
+          labelContainer.appendChild(document.createElement('div'));
+        }
+      }
+
+      async function onFileSelected(event) {
+        await init();
+        const selectedFile = event.target.files[0];
+        const img = document.createElement('img');
+        const img2 = document.getElementById('uploaded-image2');
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          img.src = e.target.result;
+          img2.src = e.target.result;
+          img.onload = async function () {
+            const prediction = await model.predict(img);
+            for (let i = 0; i < maxPredictions; i++) {
+              const classPrediction =
+                prediction[i].className +
+                ': ' +
+                prediction[i].probability.toFixed(2);
+
+              // Create a new element to display the prediction
+              const predictionElement = document.createElement('div');
+              predictionElement.innerHTML = classPrediction;
+
+              // Get the values for class1 and class2
+              const class1Value = prediction[0].probability;
+              const class2Value = prediction[1].probability;
+
+              // Compare the values and display the appropriate symbol
+              if (class1Value > class2Value) {
+                predictionElement.innerHTML = ' ◯'; // Display ◯ if class1 is greater
+              } else {
+                predictionElement.innerHTML = ' ×'; // Display × if class2 is greater
+              }
+
+              // Append the prediction element to the label container
+              labelContainer.appendChild(predictionElement);
+
+              const imgElement = document.getElementById('uploaded-image');
+              if (class1Value > class2Value) {
+                imgElement.src = 'sampleImage/IMG_3330.jpg';
+              } else {
+                imgElement.src = 'sampleImage/IMG_3331.jpg';
+              }
+            }
+          };
+        };
+        reader.readAsDataURL(selectedFile);
+      }
+    </script> -->
+  </body>
+</html>

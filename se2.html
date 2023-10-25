@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ウェブアプリケーション設計演習</title>
+    <link rel="stylesheet" href="style3.css" />
+    <script>
+      (function(d) {
+        var config = {
+          kitId: 'bit3lzi',
+          scriptTimeout: 3000,
+          async: true
+        },
+        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+      })(document);
+    </script>
+
+<style>
+  [v-cloak] {
+    display: none;
+  }
+</style>
+
+  </head>
+
+
+<body v-cloak @vue:mounted="init">
+
+    <header class="header">
+      <!-- ヘッダーロゴ -->
+      <div class="logo">
+        <img src="icon.png" alt="icon" />
+      </div>
+      
+      </div>
+
+      <!-- ハンバーガーメニュー部分 -->
+      <div class="nav">
+        <!-- ハンバーガーメニューの表示・非表示を切り替えるチェックボックス -->
+        <input id="drawer_input" class="drawer_hidden" type="checkbox" />
+
+        <!-- ハンバーガーアイコン -->
+        <label for="drawer_input" class="drawer_open"><span></span></label>
+
+        <!-- メニュー -->
+        <nav class="nav_content">
+          <ul class="nav_list">
+            <hr>
+            <li class="nav_item"><a href="./index.html">好きな車の写真をアップロードして探す <span></span> ➤</a></li>
+            <hr>
+            <li class="current-page">
+              <a href="./se2.html">好みのデザインを選択して車を見つける <span></span> ➤</a>
+            </li> <hr>
+            <li class="nav_item">
+              <a href="./se.html" class="current-page">サイトトップ <span></span> ➤</a>
+            </li>
+            <hr>
+            <li class="nav_item">
+              <a href="./quote.html">画像などの引用について<span></span> ➤</a>
+            </li>
+            <hr>
+
+          </ul>
+
+          <img src="./image/chira.png" alt="" />
+        </nav>
+      </div>
+    </header>
+
+
+    <!-- <nav class="Btn">
+      <span @click="screen = 'question1'"><button  @click="toggle"  :class="q1">Q1</button></span>
+      <span @click="screen = 'question3'"><button  @click="toggle"  :class="q3">Q3</button></span>
+     <span @click="screen = 'question4'"><button  @click="toggle" :class="q4">Q4</button></span> 
+     <span @click="screen = 'funiki1'"><button  @click="toggle" :class="f1">雰囲気１</button></span> 
+     <span @click="screen = 'funiki2'"><button  @click="toggle" :class="f2">雰囲気2</button></span> 
+     <a :href="answer"><button>anser1</button></a> 
+    </nav> -->
+
+    
+    <template v-if="screen == 'question3'">
+      <div id="question3Screen" v-scope="question3Screen()">
+      
+      </div>
+    </template>
+    
+    <template v-else-if="screen == 'question4'">
+      <div id="question4Screen" v-scope="question4Screen()">
+      </div>
+    </template>
+
+    <template v-else-if="screen == 'funiki1'">
+      <div id="funiki1Screen" v-scope="funiki1Screen()">
+      </div>
+    </template>
+
+    <template v-else-if="screen == 'funiki2'">
+      <div id="funiki2Screen" v-scope="funiki2Screen()">
+      </div>
+    </template>
+
+    <template v-else>
+      <div id="question1Screen" v-scope="question1Screen()">
+    
+      </div>
+    </template>
+
+
+    <template id="Q1S">
+    <section class="question">
+
+      <div class="selected">
+      <p class="selected_p">Q1.好きな車のイメージはどっち？</p>
+      <img src="./icon/7545_color.png" alt="" class="selctImg">
+      <br>
+      <div class="radiobox">
+    
+        <!-- <span @click="screen = 'funiki1'"><button  @click="toggle" :class="f1" class="btn_none"></button> -->
+          <input
+      
+          id="radio1"
+            type="radio"
+            name="hair"
+            v-model="box"
+            value="cute"
+            class="radiobutton"
+            @change="handleBoxChange"
+          /><label for="radio1"class="label_r">かわいい</label
+        >
+      <!-- </span>  -->
+
+      <!-- <span @click="screen = 'funiki2'"><button  @click="toggle" :class="f2" class="btn_none"></button> -->
+          <input
+          id="radio2"
+            type="radio"
+            name="hair"
+            v-model="box"
+            value="cool"
+            class="radiobutton"
+            @change="handleBoxChange"
+          /> <label for="radio2" class="label_r">かっこいい</label
+        >
+       
+
+    
+    
+      <!-- </span>  -->
+    </div>
+    </div>
+    
+    </section>
+  </template>
+
+    
+  <template id="Q3S">
+
+  <section class="question">
+
+  <div class="selected">
+  <p class="selected_p">Q3.車のお値段はどのくらいがいい？</p>
+  <div class="radiobox">
+    <!-- radioboxの消し方はネット参照 -->
+   
+   
+      <input
+      id="radio2"
+        type="radio"
+        name="hair"
+        v-model="money"
+        value="normal"
+        class="radiobutton"
+        @change="handleBoxChange"
+      /> <label for="radio2" class="label_r">普通(350～500万程度)</label
+    >
+   
+<br>
+  <div class="second">
+      <input
+      id="radio4"
+        type="radio"
+        name="hair"
+        v-model="money"
+        value="luxury"
+        class="radiobutton"
+        @change="handleBoxChange"
+      />  <label for="radio4"class="label_r">高め(500万程度～)</label
+    >
+  </div>
+
+
+
+</div>
+</div>
+</section>
+</template>
+
+
+<template id="Q4S">
+<section class="question">
+<div class="selected">
+
+  <p class="selected_p">Q4.車の形はどれがいい？</p>
+<!-- <div class="car_icon">
+
+<img src="./icon/1.png" alt="">
+<img src="./icon/2.png" alt="">
+
+<img src="./icon/3.png" alt="">
+<img src="./icon/4.png" alt="">
+<img src="./icon/5.png" alt="">
+<img src="./icon/6.png" alt="">
+</div> -->
+
+<div class="icon_input">
+<input type="radio"  v-model="size" name="sizeSelect" value="1"  id="1"   @change="handleBoxChange"> <label for="1"></label>
+<input type="radio" v-model="size" name="sizeSelect" value="2" id="2"  @change="handleBoxChange"><label for="2"></label>
+<input type="radio" v-model="size" name="sizeSelect" value="3" id="3"  @change="handleBoxChange"><label for="3"></label>
+<input type="radio" v-model="size" name="sizeSelect" value="4" id="4"  @change="handleBoxChange"><label for="4"></label>
+<input type="radio" v-model="size" name="sizeSelect" value="5" id="5"  @change="handleBoxChange"><label for="5"></label>
+<input type="radio" v-model="size" name="sizeSelect" value="6" id="6"  @change="handleBoxChange"><label for="6"></label>
+
+</div>
+</div>
+
+</section>
+
+</template>
+
+
+
+
+
+<template id="funiki1S">
+<section class="question">
+  <div class="selected">
+  
+    <p class="selected_p">Q2.車の雰囲気はどれがいい？</p>
+
+  
+  <div class="img_input">
+  <input type="radio" v-model="funiki1" name="sizeSelect" value="car_1" id="1" @change="handleBoxChange"><label for="1"></label>
+  <input type="radio" v-model="funiki1" name="sizeSelect" value="car_2" id="2" @change="handleBoxChange"><label for="2"></label>
+  <input type="radio" v-model="funiki1" name="sizeSelect" value="car_3" id="3" @change="handleBoxChange"><label for="3"></label>
+  <input type="radio" v-model="funiki1" name="sizeSelect" value="car_4" id="4"  @change="handleBoxChange"><label for="4"></label>
+
+  
+  </div>
+  </div>
+  
+  </section>
+</template>
+
+
+
+<template id="funiki2S">
+  <section class="question">
+    <div class="selected">
+    
+      <p class="selected_p">Q2.車の雰囲気はどれがいい？</p>
+    <!-- <div class="car_icon">
+    
+    <img src="./icon/1.png" alt="">
+    <img src="./icon/2.png" alt="">
+    
+    <img src="./icon/3.png" alt="">
+    <img src="./icon/4.png" alt="">
+    <img src="./icon/5.png" alt="">
+    <img src="./icon/6.png" alt="">
+    </div> -->
+   
+    <div class="img_input">
+    <input type="radio" v-model="funiki2" name="sizeSelect" value="car_5" id="1" @change="handleBoxChange"><label for="1"></label>
+    <input type="radio" v-model="funiki2" name="sizeSelect" value="car_6" id="2" @change="handleBoxChange"><label for="2"></label>
+    <input type="radio" v-model="funiki2" name="sizeSelect" value="car_7" id="3" @change="handleBoxChange"><label for="3"></label>
+    <input type="radio" v-model="funiki2" name="sizeSelect" value="car_8" id="4"  @change="handleBoxChange"><label for="4"></label>
+  
+    
+    </div>
+    </div>
+    
+    </section>
+  </template>
+<a href="./quote.html" class="quote">画像などの引用について</a>
+<section class="anser" id="anser1">
+<div class="compact_cute_car">
+<h3>あなたにおすすめのくるまタイプは...</h3>
+<h1>コンパクト &emsp; <em class="peke">かわいい</em></h1>
+
+<img src="./icon_car/boon.jpg" alt="">
+
+<h3 class="anser_car">ダイハツのBOON</h3>
+<p>自分の好きなスタイルにできる丸めのかわいいくるま！</p>
+<a href="https://www.daihatsu.co.jp/lineup/boon/">詳しくはこちら</a>
+<a href="./car.html">他のくるまはこちら！</a>
+</div>
+
+</section>
+
+<section class="anser" id="anser3">
+  <div class="compact_cute_car">
+  <h3>あなたにおすすめのくるまタイプは...</h3>
+  <h1>軽 &emsp; <em class="peke">かわいい</em></h1>
+  
+  <img src="./icon_car/lapan.jpg" alt="">
+  
+  <h3 class="anser_car">スズキ の ラパン</h3>
+  <p>カラーバリエーション豊富な箱形のかわいいくるま！</p>
+  <a href="https://www.suzuki.co.jp/car/lapin/">詳しくはこちら</a>
+  
+<br>
+<a href="./car.html">他のくるまはこちら！</a>
+</div>
+  
+  </section>
+
+
+
+
+  <section class="anser" id="anser4">
+    <div class="compact_cute_car">
+    <h3>あなたにおすすめのくるまタイプは...</h3>
+    <h1>おおきめ &emsp; <em class="peke">かわいい</em></h1>
+    
+    <img src="./icon_car/sienta.jpg" alt="">
+    
+    <h3 class="anser_car">トヨタ の シエンタ</h3>
+    <p>7人も乗れるおおきめのかわいいくるま！</p>
+    <a href="https://toyota.jp/sienta/">詳しくはこちら</a>
+    
+  <br>
+  <a href="./car.html">他のくるまはこちら！</a>
+  </div>
+    
+    </section>
+  
+
+    <section class="anser" id="anser5">
+      <div class="compact_cute_car">
+      <h3>あなたにおすすめのくるまタイプは...</h3>
+      <h1>スポーティ &emsp; <em class="peke">かわいい</em></h1>
+      
+      <img src="./icon_car/hasura-.jpg" alt="">
+      
+      <h3 class="anser_car">スズキ の ハスラー</h3>
+      <p>あたらしい、遊べる軽！ <br>カスタマイズで自分らしいハスラーと出会える！</p>
+      <a href="https://www.suzuki.co.jp/car/hustler/">詳しくはこちら</a>
+      
+    <br>
+    <a href="./car.html">他のくるまはこちら！</a>
+    </div>
+      
+      </section>
+    
+      <section class="anser" id="anser6">
+        <div class="compact_cute_car">
+        <h3>あなたにおすすめのくるまタイプは...</h3>
+        <h1>スポーティ &emsp; <em class="peke">かわいい</em></h1>
+        
+        <img src="./icon_car/mini.png" alt="">
+        
+        <h3 class="anser_car">MINI の MINI COOPER 5 DOOR</h3>
+        <p>色、ポイントなどのカスタマイズができる、スポーティ⁻なくるま！</p>
+        <a href="https://www.mini.jp/ja_JP/home/range/mini-5-door-hatch.html">詳しくはこちら</a>
+        
+      <br>
+      <a href="./car.html">他のくるまはこちら！</a>
+      </div>
+        
+        </section>
+
+        <section class="anser" id="anser28">
+          <div class="compact_cute_car">
+          <h3>あなたにおすすめのくるまタイプは...</h3>
+          <h1>スポーティ &emsp; <em class="peke">かわいい</em></h1>
+          
+          <img src="./icon_car/crossbe.jpg" alt="">
+          
+          <h3 class="anser_car">スズキ の クロスビー</h3>
+          <p>色などのカスタマイズができる、スポーティ⁻なくるま！</p>
+          <a href="https://www.suzuki.co.jp/car/xbee/">詳しくはこちら</a>
+          
+        <br>
+        <a href="./car.html">他のくるまはこちら！</a>
+        </div>
+          
+          </section>
+  
+      </section>
+    
+      <section class="anser" id="anser7">
+        <div class="compact_cute_car">
+        <h3>あなたにおすすめのくるまタイプは...</h3>
+        <h1>スタイリッシュ &emsp; <em class="peke">かわいい</em></h1>
+     
+        
+        <img src="./icon_car/mazuda2.png" alt="">
+        
+        <h3 class="anser_car">マツダ の mazuda2</h3>
+        <p>スタイリッシュでかっこよさもあり、かわいさもあるくるま！<br> カスタマイズもできる！</p>
+        <a href="https://www.mazda.co.jp/cars/mazda2/">詳しくはこちら</a>
+        
+      <br>
+      <a href="./car.html">他のくるまはこちら！</a>
+      </div>
+        
+        </section>
+
+        <section class="anser" id="anser8">
+          <div class="compact_cute_car">
+          <h3>あなたにおすすめのくるまタイプは...</h3>
+          <h1>近未来 &emsp; <em class="peke">かわいい</em></h1>
+          
+          <img src="./icon_car/fit.jpg" alt="">
+          
+          <h3 class="anser_car">ホンダ の フィット</h3>
+          <p>近未来的でかっこよさもあり、かわいさもあるくるま！</p>
+          <a href="https://www.honda.co.jp/Fit">詳しくはこちら</a>
+          
+        <br>
+        <a href="./car.html">他のくるまはこちら！</a>
+        </div>
+          
+          </section>
+
+          <section class="anser" id="anser22">
+            <div class="compact_cute_car">
+            <h3>あなたにおすすめのくるまタイプは...</h3>
+            <h1>近未来 &emsp; <em class="peke">かわいい</em></h1>
+            
+            <img src="./icon_car/freed.png" alt="">
+            
+            <h3 class="anser_car">ホンダ の フリード</h3>
+            <p>近未来的でかっこよさもあり、かわいさもあるおおきめのくるま！</p>
+            <a href="https://www.honda.co.jp/FREED/">詳しくはこちら</a>
+            
+          <br>
+          <a href="./car.html">他のくるまはこちら！</a>
+          </div>
+            
+            </section>
+
+
+            <section class="anser" id="anser23">
+              <div class="compact_cute_car">
+              <h3>あなたにおすすめのくるまタイプは...</h3>
+              <h1>おおきめ &emsp; <em class="peke">かわいい</em></h1>
+              
+              <img src="./icon_car/stepwagon.png" alt="">
+              
+              <h3 class="anser_car">ホンダ の ステップワゴン</h3>
+              <p>かわいくておおきめのくるま！</p>
+              <a href="https://www.honda.co.jp/STEPWGN/">詳しくはこちら</a>
+              
+            <br>
+            <a href="./car.html">他のくるまはこちら！</a>
+            </div>
+              
+              </section>
+
+          <section class="anser" id="anser15">
+            <div class="compact_cute_car">
+            <h3>あなたにおすすめのくるまタイプは...</h3>
+            <h1>かっこいい &emsp; <em class="peke">かわいい</em></h1>
+            
+            <img src="./icon_car/delica.png" alt="">
+            
+            <h3 class="anser_car">三菱 の デリカミニ</h3>
+            <p>かっこよさもあり、犬みたいにかわいさもあるくるま！</p>
+            <a href="https://www.mitsubishi-motors.co.jp/lineup/delica_mini/index.html">詳しくはこちら</a>
+            
+          <br>
+          <a href="./car.html">他のくるまはこちら！</a>
+          </div>
+            
+            </section>
+
+          <!-- <section class="anser" id="anser9">
+            <div class="compact_cute_car">
+            <h3>あなたにおすすめのくるまタイプは...</h3>
+            <h1>近未来 &emsp; <em class="peke">かわいい</em></h1>
+            
+            <img src="./icon_car/n-one.jpg" alt="">
+            
+            <h3 class="anser_car">ホンダ の N-ONE</h3>
+            <p>軽なのに近未来的でかわいいくるま！</p>
+            <a href="https://www.honda.co.jp/N-ONE/">詳しくはこちら</a>
+            
+          <br>
+          <a href="">他のくるまはこちら！</a>
+          </div>
+            
+            </section> -->
+
+
+          <section class="anser" id="anser9">
+            <div class="compact_cute_car">
+            <h3>あなたにおすすめのくるまタイプは...</h3>
+            <h1>SUV &emsp; <em class="peke">かわいい</em></h1>
+            
+            <img src="./icon_car/fiat.png" alt="">
+            
+            <h3 class="anser_car">FIAT の 500X</h3>
+            <p>SUVならではのスポーティさと、かわいさもあるくるま！</p>
+            <a href="https://www.fiat-auto.co.jp/500x/club">詳しくはこちら</a>
+            
+          <br>
+          <a href="./car.html">他のくるまはこちら！</a>
+          </div>
+            
+            </section>
+
+            <section class="anser" id="anser2">
+              <div class="compact_cute_car">
+              <h3>あなたにおすすめのくるまタイプは...</h3>
+              <h1>ファストバック &emsp; <em class="peke2">スタイリッシュ</em></h1>
+              
+              <img src="./icon_car/mazuda3.png" alt="">
+              
+              <h3 class="anser_car">マツダ の mazuda3</h3>
+              <p>スポーティ&スタイリッシュさと、高級感もあるくるま！</p>
+              <a href="https://www.mazda.co.jp/cars/mazda3/">詳しくはこちら</a>
+              
+            <br>
+            <a href="./car.html">他のくるまはこちら！</a>
+            </div>
+              
+              </section>
+
+
+
+              <section class="anser" id="anser10">
+                <div class="compact_cute_car">
+                <h3>あなたにおすすめのくるまタイプは...</h3>
+                <h1>セダン &emsp; <em class="peke2">スタイリッシュ</em></h1>
+                
+                <img src="./icon_car/mazuda6.png" alt="">
+                
+                <h3 class="anser_car">マツダ の mazuda6</h3>
+                <p>スタイリッシュさと重厚感、高級感のあるくるま！</p>
+                <a href="https://www.mazda.co.jp/cars/mazda6/">詳しくはこちら</a>
+                
+              <br>
+              <a href="./car.html">他のくるまはこちら！</a>
+              </div>
+                
+                </section>
+
+                <section class="anser" id="anser16">
+                  <div class="compact_cute_car">
+                  <h3>あなたにおすすめのくるまタイプは...</h3>
+                  <h1>SUV &emsp; <em class="peke2">スタイリッシュ</em></h1>
+                  
+                  <img src="./icon_car/haria-.jpg" alt="">
+                  
+                  <h3 class="anser_car">トヨタ の ハリアー</h3>
+                  <p>スポーティーさと重厚感、高級感のあるくるま！</p>
+                  <a href="https://toyota.jp/harrier/">詳しくはこちら</a>
+                  
+                <br>
+                <a href="./car.html">他のくるまはこちら！</a>
+                </div>
+                  
+                  </section>
+
+                  <section class="anser" id="anser11">
+                    <div class="compact_cute_car">
+                    <h3>あなたにおすすめのくるまタイプは...</h3>
+                    <h1>SUV &emsp; <em class="peke2">スタイリッシュ</em></h1>
+                    
+                    <img src="./icon_car/cx-30.png" alt="">
+                    
+                    <h3 class="anser_car">マツダ の cx-30</h3>
+                    <p>スポーティーさと重厚感のあるくるま！</p>
+                    <a href="https://www.mazda.co.jp/cars/cx-30/">詳しくはこちら</a>
+                    
+                  <br>
+                  <a href="./car.html">他のくるまはこちら！</a>
+                  </div>
+                    
+                    </section>
+
+                    <section class="anser" id="anser12">
+                      <div class="compact_cute_car">
+                      <h3>あなたにおすすめのくるまタイプは...</h3>
+                      <h1>ミニバン &emsp; <em class="peke2">スタイリッシュ</em></h1>
+                      
+                      <img src="./icon_car/voxy.png" alt="">
+                      
+                      <h3 class="anser_car">トヨタ の voxy</h3>
+                      <p>スポーティーさと重厚感のあるくるま！</p>
+                      <a href="https://toyota.jp/voxy/?padid=from_carlineup_voxy">詳しくはこちら</a>
+                      
+                    <br>
+                    <a href="./car.html">他のくるまはこちら！</a>
+                    </div>
+                      
+                      </section>
+
+
+                      <section class="anser" id="anser17">
+                        <div class="compact_cute_car">
+                        <h3>あなたにおすすめのくるまタイプは...</h3>
+                        <h1>セダン &emsp; <em class="peke3">スポーティー</em></h1>
+                        
+                        <img src="./icon_car/s4.png" alt="">
+                        
+                        <h3 class="anser_car">スバル の WRX S4</h3>
+                        <p>スポーティーで山道も駆け抜けるくるま！</p>
+                        <a href="https://www.subaru.jp/wrx/s4/">詳しくはこちら</a>
+                        
+                      <br>
+                      <a href="./car.html">他のくるまはこちら！</a>
+                      </div>
+                        
+                        </section>
+    
+                        <section class="anser" id="anser18">
+                          <div class="compact_cute_car">
+                          <h3>あなたにおすすめのくるまタイプは...</h3>
+                          <h1>suv &emsp; <em class="peke3">スポーティー</em></h1>
+                          
+                          <img src="./icon_car/foresuta-.png" alt="">
+                          
+                          <h3 class="anser_car">スバル の フォレスター</h3>
+                          <p>スポーティーで山道も駆け抜けるくるま！</p>
+                          <a href="https://www.subaru.jp/forester/forester/">詳しくはこちら</a>
+                          
+                        <br>
+                        <a href="./car.html">他のくるまはこちら！</a>
+                        </div>
+                          
+                          </section>
+  
+
+                          <section class="anser" id="anser19">
+                            <div class="compact_cute_car">
+                            <h3>あなたにおすすめのくるまタイプは...</h3>
+                            <h1>ワゴン &emsp; <em class="peke3">スポーティー</em></h1>
+                            
+                            <img src="./icon_car/inpuressa.png" alt="">
+                            
+                            <h3 class="anser_car">スバル の インプレッサ</h3>
+                            <p>スポーティーでかつ安心安全のくるま！</p>
+                            <a href="https://www.subaru.jp/impreza/impreza/">詳しくはこちら</a>
+                            
+                          <br>
+                          <a href="./car.html">他のくるまはこちら！</a>
+                          </div>
+                            
+                            </section>
+
+                            <section class="anser" id = 'anser20'>
+                              <div class="compact_cute_car">
+                              <h3>あなたにおすすめのくるまタイプは...</h3>
+                              <h1>軽 &emsp; <em class="peke3">スポーティー</em></h1>
+                              
+                              <img src="./icon_car/jasuty.png" alt="">
+                              
+                              <h3 class="anser_car">スバル の ジャスティ</h3>
+                              <p>軽なのにスポーティーさも兼ね備えた、自由なくるま！</p>
+                              <a href="https://www.subaru.jp/justy/justy/">詳しくはこちら</a>
+                              
+                            <br>
+                            <a href="./car.html">他のくるまはこちら！</a>
+                            </div>
+                              
+                              </section>
+                              <section class="anser" id = 'anser21'>
+                                <div class="compact_cute_car">
+                                <h3>あなたにおすすめのくるまタイプは...</h3>
+                                <h1>コンパクト &emsp; <em class="peke3">スポーティー</em></h1>
+                                
+                                <img src="./icon_car/yaris.png" alt="">
+                                
+                                <h3 class="anser_car">トヨタ の ヤリス</h3>
+                                <p>スポーティーで走るのが楽しくなるくるま！</p>
+                                <a href="https://toyota.jp/yaris/?padid=from_carlineup_yaris">詳しくはこちら</a>
+                                
+                              <br>
+                              <a href="./car.html">他のくるまはこちら！</a>
+                              </div>
+                                
+                                </section>
+
+                              <section class="anser" id="anser13">
+                                <div class="compact_cute_car">
+                                <h3>あなたにおすすめのくるまタイプは...</h3>
+                                <h1>軽 &emsp; <em class="peke4">近未来</em></h1>
+                                
+                                <img src="./icon_car/sakura.jpg" alt="">
+                                
+                                <h3 class="anser_car">日産 の SAKURA</h3>
+                                <p>近未来的なデザイン、かっこよさかわいさを兼ね備えたくるま！(電気自動車)</p>
+                                <a href="https://www3.nissan.co.jp/vehicles/new/sakura.html">詳しくはこちら</a>
+                                
+                              <br>
+                              <a href="./car.html">他のくるまはこちら！</a>
+                              </div>
+                                
+                                </section>
+  
+
+                                <section class="anser" id="anser24">
+                                  <div class="compact_cute_car">
+                                  <h3>あなたにおすすめのくるまタイプは...</h3>
+                                  <h1>コンパクト &emsp; <em class="peke4">近未来</em></h1>
+                                  
+                                  <img src="./icon_car/aura.jpg" alt="">
+                                  
+                                  <h3 class="anser_car">日産 の AURA</h3>
+                                  <p>近未来的なデザイン、カラーバリエーション豊富なくるま！</p>
+                                  <a href="https://www3.nissan.co.jp/vehicles/new/aura.html">詳しくはこちら</a>
+                                  
+                                <br>
+                                <a href="./car.html">他のくるまはこちら！</a>
+                                </div>
+                                  
+                                  </section>
+
+
+                                  <section class="anser" id="anser25">
+                                    <div class="compact_cute_car">
+                                    <h3>あなたにおすすめのくるまタイプは...</h3>
+                                    <h1>セダン &emsp; <em class="peke4">近未来</em></h1>
+                                    
+                                    <img src="./icon_car/carolla.png" alt="">
+                                    
+                                    <h3 class="anser_car">トヨタ の カローラ</h3>
+                                    <p>近未来的でスポーティ、かつエレガントさもあるくるま！</p>
+                                    <a href="https://toyota.jp/corolla/?padid=from_carlineup_corollal">詳しくはこちら</a>
+                                    
+                                  <br>
+                                  <a href="./car.html">他のくるまはこちら！</a>
+                                  </div>
+                                    
+                                    </section>
+  
+                                    <!-- <section class="anser" id="anser26">
+                                      <div class="compact_cute_car">
+                                      <h3>あなたにおすすめのくるまタイプは...</h3>
+                                      <h1>SUV &emsp; <em class="peke4">高級感</em></h1>
+                                      
+                                      <img src="./icon_car/ariya.jpg" alt="">
+                                      
+                                      <h3 class="anser_car">日産 の アリア</h3>
+                                      <p>近未来的でスポーティ、かつ高級感のあるくるま！</p>
+                                      <a href="https://www3.nissan.co.jp/vehicles/new/ariya.html">詳しくはこちら</a>
+                                      
+                                    <br>
+                                    <a href="">他のくるまはこちら！</a>
+                                    </div>
+                                      
+                                      </section> -->
+
+
+
+                                      <section class="anser" id="anser29">
+                                        <div class="compact_cute_car">
+                                        <h3>あなたにおすすめのくるまタイプは...</h3>
+                                        <h1>SUV &emsp; <em class="peke4">近未来</em></h1>
+                                        
+                                        <img src="./icon_car/visel.png" alt="">
+                                        
+                                        <h3 class="anser_car">ホンダ の ヴィゼル</h3>
+                                        <p>近未来的でスポーティ、かつ高級感のあるくるま！</p>
+                                        <a href="https://www.honda.co.jp/VEZEL/?from=auto_header">詳しくはこちら</a>
+                                        
+                                      <br>
+                                      <a href="./car.html">他のくるまはこちら！</a>
+                                      </div>
+                                        
+                                        </section>
+  
+
+                                      <!-- <section class="anser">
+                                        <div class="compact_cute_car">
+                                        <h3>あなたにおすすめのくるまタイプは...</h3>
+                                        <h1>SUV &emsp; <em class="peke4">高級感</em></h1>
+                                        
+                                        <img src="./icon_car/crown.png" alt="" >
+                                        
+                                        <h3 class="anser_car">トヨタ の クラウン</h3>
+                                        <p>近未来的でスポーティ、かつ高級感のあるくるま！</p>
+                                        <a href="https://toyota.jp/crown/?padid=from_carlineup_crown">詳しくはこちら</a>
+                                        
+                                      <br>
+                                      <a href="">他のくるまはこちら！</a>
+                                      </div>
+                                        
+                                        </section> -->
+  
+                  
+
+                                        <section class="anser" id="anser27">
+                                          <div class="compact_cute_car">
+                                          <h3>あなたにおすすめのくるまタイプは...</h3>
+                                          <h1>セダン &emsp; <em class="peke4">高級感</em></h1>
+                                          
+                                          <img src="./icon_car/IS.png" alt="" >
+                                          
+                                          <h3 class="anser_car">レクサス の IS</h3>
+                                          <p>近未来的でスポーティ、かつ高級感のあるくるま！</p>
+                                          <a href="https://lexus.jp/models/is/">詳しくはこちら</a>
+                                          
+                                        <br>
+                                        <a href="./car.html">他のくるまはこちら！</a>
+                                        </div>
+                                          
+                                          </section>
+
+                                          <section class="anser" id="anser14">
+                                            <div class="compact_cute_car">
+                                            <h3>あなたにおすすめのくるまタイプは...</h3>
+                                            <h1>ハッチバック &emsp; <em class="peke4">高級感</em></h1>
+                                            
+                                            <img src="./icon_car/civic.png" alt="" >
+                                            
+                                            <h3 class="anser_car">ホンダ の ジビック</h3>
+                                            <p>近未来的でスポーティ、かつ高級感のあるくるま！</p>
+                                            <a href="https://www.honda.co.jp/CIVIC/?from=auto_header">詳しくはこちら</a>
+                                            
+                                          <br>
+                                          <a href="./car.html">他のくるまはこちら！</a>
+                                          </div>
+                                            
+                                            </section>
+
+<script src="https://unpkg.com/petite-vue"></script>
+<script src="script3.js"></script>
+
+
+  </body>
+</html>

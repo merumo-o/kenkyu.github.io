@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ウェブアプリケーション設計演習</title>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      (function(d) {
+        var config = {
+          kitId: 'bit3lzi',
+          scriptTimeout: 3000,
+          async: true
+        },
+        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+      })(document);
+    </script>
+  </head>
+
+
+  <body>
+
+    <header class="header">
+      <!-- ヘッダーロゴ -->
+      <div class="logo">
+        <img src="icon.png" alt="icon" />
+      </div>
+      
+      </div>
+
+      <!-- ハンバーガーメニュー部分 -->
+      <div class="nav">
+        <!-- ハンバーガーメニューの表示・非表示を切り替えるチェックボックス -->
+        <input id="drawer_input" class="drawer_hidden" type="checkbox" />
+
+        <!-- ハンバーガーアイコン -->
+        <label for="drawer_input" class="drawer_open"><span></span></label>
+
+        <!-- メニュー -->
+        <nav class="nav_content">
+          <ul class="nav_list">
+            <hr>
+            <li class="nav_item"><a href="./index.html">好きな車の写真をアップロードして探す <span></span> ➤</a></li>
+            <hr>
+            <li class="nav_item">
+              <a href="./se2.html">好みのデザインを選択して車を見つける <span></span> ➤</a>
+            </li> <hr>
+            <li class="current-page">
+              <a href="./se.html">サイトトップ <span></span> ➤</a>
+            </li>
+            <hr>
+            
+            <li class="nav_item">
+              <a href="./quote.html">画像などの引用について<span></span> ➤</a>
+            </li>
+            <hr>
+
+          </ul>
+
+          <img src="./image/chira.png" alt="" />
+        </nav>
+      </div>
+    </header>
+
+
+    <h1 class="topText">Car_selector</h1>
+    <div class="top">
+
+      <img src="./8247.png" alt="">
+    </div>
+
+
+    <section class="top_sec">
+<h2>Car_selectorは <br>好きなデザインの車が見つかる新感覚の、アプリケーションです!</h2>
+
+
+<div class="topFlex">
+<a href="./index.html" class="likeCar">
+<div >
+
+  <p>好きな車の写真を<br>
+    アップロードして探す</p>
+
+    <img src="imgIcon.png" alt="" >
+</div></a>
+<a href="./se2.html" class="likeCar">
+<div >
+
+  <p>質問項目を選択して探す</p>
+
+    <img src="musimegane.png" alt="" >
+</div></a>
+</div>
+    </section>
+  </body>
+</html>
