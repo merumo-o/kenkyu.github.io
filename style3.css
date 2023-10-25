@@ -605,7 +605,7 @@ input[type='radio'][value='car_8'] + label:before {
   .top_sec h2 {
     font-size: 20px;
   }
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 400px) {
     .icon_input input[type='radio'] + label:before {
       content: '';
       display: inline-block;
