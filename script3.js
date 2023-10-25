@@ -103,6 +103,13 @@ PetiteVue.createApp({
     ) {
       return '#anser23'; // 条件が合致する場合はanser1のIDを返す
     } else if (
+      this.box === 'cool' &&
+      (this.money === 'normal' || this.money === 'luxury') &&
+      this.funiki2 === 'car_5' &&
+      this.size === '1'
+    ) {
+      return '#anser12';
+    } else if (
       (this.box === 'cute' &&
         (this.money === 'normal' || this.money === 'luxury') &&
         this.funiki1 === 'car_4' &&
@@ -187,17 +194,6 @@ PetiteVue.createApp({
       this.size === '2'
     ) {
       return '#anser11';
-    } else if (
-      (this.box === 'cute' &&
-        (this.money === 'normal' || this.money === 'luxury') &&
-        this.funiki1 === 'car_4' &&
-        this.size === '1') ||
-      (this.box === 'cool' &&
-        this.money === 'normal' &&
-        this.funiki2 === 'car_5' &&
-        this.size === '1')
-    ) {
-      return '#anser12';
     } else if (
       (this.box === 'cute' || this.box === 'cool') &&
       (this.money === 'normal' || this.money === 'luxury') &&

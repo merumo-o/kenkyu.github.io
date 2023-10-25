@@ -605,4 +605,21 @@ input[type='radio'][value='car_8'] + label:before {
   .top_sec h2 {
     font-size: 20px;
   }
+  @media screen and (max-width: 375px) {
+    .icon_input input[type='radio'] + label:before {
+      content: '';
+      display: inline-block;
+      background-size: contain;
+      width: 100px;
+      height: 43px;
+
+      padding: 10px;
+
+      background-color: white;
+      box-shadow: 1px 2.5px 5px -1px rgb(148, 150, 153);
+      border-radius: 25px;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
 }
