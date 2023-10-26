@@ -1,3 +1,7 @@
+/* * {
+  outline: 2px red solid;
+} */
+
 body {
   background-color: rgb(250, 241, 215);
 }
@@ -154,7 +158,7 @@ img[alt='sakuraCar'] {
 .file_src {
   background-color: white;
   border: solid 8px rgb(61, 60, 56);
-  width: 1000px;
+  max-width: 1000px;
   padding-top: 100px;
   padding-bottom: 100px;
   text-align: center;
@@ -212,8 +216,8 @@ img[alt='sakuraCar'] {
 }
 .model_name {
   text-align: center;
-  margin-top: 100px;
-  margin-bottom: -100px;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 .result {
   background-color: white;
@@ -249,18 +253,18 @@ img[alt='pink_car'] {
 .selected {
   margin-top: 75px;
 }
-.first_stage a {
+/* .first_stage a {
   margin-left: 145px;
   margin-right: 145px;
-}
+} */
 .result_text {
   margin-top: 10px;
   margin-bottom: 170px;
 }
-.selectedImg a {
+/* .selectedImg a {
   margin-left: 150px;
   margin-right: 150px;
-}
+} */
 .thired_stage {
   margin-top: -175px;
   padding-bottom: 300px;
@@ -305,7 +309,7 @@ img[alt='pink_car'] {
   left: 0;
   right: 0;
   top: 1380px;
-  right: -650px;
+  left: 650px;
 }
 
 .selectedImg a:nth-of-type(1) {
@@ -321,7 +325,7 @@ img[alt='pink_car'] {
   left: 0;
   right: 0;
   top: 1600px;
-  right: -650px;
+  left: 650px;
 }
 
 .thired_stage a:nth-of-type(1) {
@@ -336,7 +340,7 @@ img[alt='pink_car'] {
   left: 0;
   right: 0;
   top: 1550px;
-  right: -650px;
+  left: 650px;
 }
 
 /* .uploaded-a {
@@ -356,6 +360,15 @@ img[alt='pink_car'] {
 
   justify-content: right;
 }
+
+.attention {
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  margin-top: -25px;
+}
+
 /* @media screen and (max-width: 1400px) {
 
 
@@ -487,7 +500,7 @@ img[alt='pink_car'] {
     left: 0;
     right: 0;
     top: 1380px;
-    right: -200px;
+    left: 200px;
   }
   img[alt='pink_car'] {
     margin-bottom: -650px;
@@ -506,7 +519,7 @@ img[alt='pink_car'] {
     left: 0;
     right: 0;
     top: 1520px;
-    right: -200px;
+    left: 200px;
   }
 
   .thired_stage a:nth-of-type(1) {
@@ -521,7 +534,7 @@ img[alt='pink_car'] {
     left: 0;
     right: 0;
     top: 1390px;
-    right: -200px;
+    left: 200px;
   }
 
   .quote {
@@ -669,7 +682,7 @@ img[alt='pink_car'] {
       top: 1380px;
       left: 0;
       right: 0;
-      right: -165px;
+      left: 165px;
     }
     img[alt='pink_car'] {
       margin-bottom: -650px;
@@ -688,7 +701,7 @@ img[alt='pink_car'] {
       top: 1520px;
       left: 0;
       right: 0;
-      right: -165px;
+      left: 165px;
     }
     .thired_stage a {
       margin: 0px;
@@ -707,7 +720,7 @@ img[alt='pink_car'] {
       left: 0;
       right: 0;
       top: 1390px;
-      right: -165px;
+      left: 165px;
     }
 
     .quote {
