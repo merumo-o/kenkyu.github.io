@@ -5,9 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title></title>
     <link rel="stylesheet" href="style2.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js" integrity="sha512-9KkIqdfN7ipEW6B6k+Aq20PV31bjODg4AA52W+tYtAE0jE0kMx49bjJ3FgvS56wzmyfMUHbQ4Km2b7l9+Y/+Eg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.css" integrity="sha512-bs9fAcCAeaDfA4A+NiShWR886eClUcBtqhipoY5DM60Y1V3BbVQlabthUBal5bq8Z8nnxxiyb1wfGX2n76N1Mw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
 
-  <!-- 3kaime -->
+
+  <!-- 3kaime --> 
 
   <body>
     <header class="header">
@@ -51,7 +55,7 @@
     </header>
 
     
-    <div class="model_name">Teachable Machine Image Model</div>
+    <!-- <div class="model_name">Teachable Machine Image Model</div> -->
     <!-- <div class="likeCar">
 
       <p>好きな車の写真を<br>
@@ -62,7 +66,7 @@
    
    
     
-<p class="attention">※正方形の写真をアップロードしてください！</p>
+<p class="attention">Teachable Machine Image Model</p>
         <label class="">
  <div class="file_src" >
         <!-- <p>好きな車の写真を<br>
@@ -73,14 +77,40 @@
           <span for=”id_img”><p> <strong> 好きな車 or 雰囲気の写真を<br>
            アップロードして探す</strong></p>
         
-            <img src="imgIcon.png" alt="" ></span> <br>
+            <img src="imgIcon.png" alt="imgIcon" ></span> <br>
     
   </div> 
 
-  
-  <div class="center"><input  id=”id_img”  type="file" onchange="onFileSelected(event)" class="file_btn" /></div></label>
+  <a href="#clip_after" id="clip_link"></a>
+
+   <div class="center"  ><input id="id_img" type="file" class="file_btn" />
+</div></label>
   <img src="./icon/12690_color.png" alt="sakuraCar">
   <div class="border"></div>
+
+<section class="clip" id="clip_after">
+
+  <div class="clip1">
+    <p>トリミング前</p>
+<div >
+  <img
+          id="target"
+          src=""
+          style="object-fit: cover"
+        />
+</div>
+
+<button id='button'>切り抜く ➠</button>
+</div>
+<div class="clip_re">
+<div>
+  <p>トリミング後</p>
+  <img id='preview' style='display: block; '>
+</div>
+
+<button id='recommend_btn'>これにする</button>
+</div>
+</section>
 
 <br>
     <button type="button" onclick="init()" class="btn_none"></button>
@@ -118,80 +148,14 @@
 
   <a href="./quote.html" class="quote">画像などの引用について</a>
 </div>
+
+
+  
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
-  
 
-    <!--
-    <script type="text/javascript">
-      const URL = 'https://teachablemachine.withgoogle.com/models/uM9BCKdzV/';
 
-      let model, labelContainer, maxPredictions;
 
-      // Load the image model
-      async function init() {
-        const modelURL = URL + 'model.json';
-        const metadataURL = URL + 'metadata.json';
-
-        // load the model and metadata
-        model = await tmImage.load(modelURL, metadataURL);
-        maxPredictions = model.getTotalClasses();
-
-        // append elements to the DOM
-        labelContainer = document.getElementById('label-container');
-        for (let i = 0; i < maxPredictions; i++) {
-          // and class labels
-          labelContainer.appendChild(document.createElement('div'));
-        }
-      }
-
-      async function onFileSelected(event) {
-        await init();
-        const selectedFile = event.target.files[0];
-        const img = document.createElement('img');
-        const img2 = document.getElementById('uploaded-image2');
-        const reader = new FileReader();
-        reader.onload = function (e) {
-          img.src = e.target.result;
-          img2.src = e.target.result;
-          img.onload = async function () {
-            const prediction = await model.predict(img);
-            for (let i = 0; i < maxPredictions; i++) {
-              const classPrediction =
-                prediction[i].className +
-                ': ' +
-                prediction[i].probability.toFixed(2);
-
-              // Create a new element to display the prediction
-              const predictionElement = document.createElement('div');
-              predictionElement.innerHTML = classPrediction;
-
-              // Get the values for class1 and class2
-              const class1Value = prediction[0].probability;
-              const class2Value = prediction[1].probability;
-
-              // Compare the values and display the appropriate symbol
-              if (class1Value > class2Value) {
-                predictionElement.innerHTML = ' ◯'; // Display ◯ if class1 is greater
-              } else {
-                predictionElement.innerHTML = ' ×'; // Display × if class2 is greater
-              }
-
-              // Append the prediction element to the label container
-              labelContainer.appendChild(predictionElement);
-
-              const imgElement = document.getElementById('uploaded-image');
-              if (class1Value > class2Value) {
-                imgElement.src = 'sampleImage/IMG_3330.jpg';
-              } else {
-                imgElement.src = 'sampleImage/IMG_3331.jpg';
-              }
-            }
-          };
-        };
-        reader.readAsDataURL(selectedFile);
-      }
-    </script> -->
   </body>
 </html>

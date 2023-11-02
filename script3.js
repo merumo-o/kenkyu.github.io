@@ -108,7 +108,7 @@ PetiteVue.createApp({
       this.funiki2 === 'car_5' &&
       this.size === '1'
     ) {
-      return '#anser12';
+      return '#anser30';
     } else if (
       (this.box === 'cute' &&
         (this.money === 'normal' || this.money === 'luxury') &&
@@ -152,7 +152,7 @@ PetiteVue.createApp({
         this.funiki1 === 'car_4' &&
         this.size === '4') ||
       (this.box === 'cool' &&
-        this.money === 'normal' &&
+        (this.money === 'normal' || this.money === 'luxury') &&
         this.funiki2 === 'car_5' &&
         this.size === '4')
     ) {
@@ -182,11 +182,18 @@ PetiteVue.createApp({
       return '#anser10';
     } else if (
       this.box === 'cool' &&
-      this.money === 'normal' &&
+      this.money === 'luxury' &&
       this.funiki2 === 'car_5' &&
       this.size === '2'
     ) {
       return '#anser16';
+    } else if (
+      this.box === 'cool' &&
+      this.money === 'normal' &&
+      this.funiki2 === 'car_5' &&
+      this.size === '2'
+    ) {
+      return '#anser11';
     } else if (
       this.box === 'cute' &&
       (this.money === 'normal' || this.money === 'luxury') &&
@@ -319,7 +326,7 @@ PetiteVue.createApp({
         (this.funiki1 === 'car_1' || this.funiki1 === 'car_2') &&
         this.size === '2') ||
       (this.box === 'cool' &&
-        this.money === 'normal' &&
+        (this.money === 'normal' || this.money === 'luxury') &&
         this.funiki2 === 'car_6' &&
         this.size === '2')
     ) {
@@ -332,7 +339,7 @@ PetiteVue.createApp({
           this.funiki1 === 'car_2') &&
         (this.size === '1' || this.size === '2')) ||
       (this.box === 'cool' &&
-        this.money === 'normal' &&
+        (this.money === 'normal' || this.money === 'luxury') &&
         this.funiki2 === 'car_6' &&
         this.size === '1')
     ) {
