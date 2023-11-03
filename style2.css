@@ -304,14 +304,14 @@ img[alt='pink_car'] {
   position: absolute;
   left: 50%; /* 左端を中央に配置 */
   transform: translateX(-50%);
-  top: 2380px;
+  top: 2230px;
   margin-left: -325px;
 }
 .first_stage a:nth-of-type(2) {
   position: absolute;
   left: 50%; /* 左端を中央に配置 */
   transform: translateX(-50%);
-  top: 2380px;
+  top: 2230px;
   margin-left: 325px;
 }
 
@@ -319,7 +319,7 @@ img[alt='pink_car'] {
   position: absolute;
   left: 50%; /* 左端を中央に配置 */
   transform: translateX(-50%);
-  top: 2600px;
+  top: 2450px;
   margin-left: -325px;
 }
 
@@ -327,7 +327,7 @@ img[alt='pink_car'] {
   position: absolute;
   left: 50%; /* 左端を中央に配置 */
   transform: translateX(-50%);
-  top: 2600px;
+  top: 2450px;
   margin-left: 325px;
 }
 
@@ -335,14 +335,14 @@ img[alt='pink_car'] {
   position: absolute;
   left: 50%; /* 左端を中央に配置 */
   transform: translateX(-50%);
-  top: 2550px;
+  top: 2400px;
   margin-left: -325px;
 }
 .thired_stage a:nth-of-type(2) {
   position: absolute;
   left: 50%; /* 左端を中央に配置 */
   transform: translateX(-50%);
-  top: 2550px;
+  top: 2400px;
   margin-left: 325px;
 }
 
@@ -446,6 +446,9 @@ img[alt='pink_car'] {
 .clip_re button:hover {
   opacity: 0.7;
   transition: 0.3s;
+}
+#clip_after {
+  margin-bottom: -100px;
 }
 
 /* @media screen and (max-width: 1400px) {
@@ -564,30 +567,30 @@ img[alt='pink_car'] {
 
   .selected {
     position: absolute;
-    top: 2270px;
+    top: 2170px;
   }
   .result_text {
     position: absolute;
     left: 0;
     right: 0;
-    top: 2300px;
+    top: 2200px;
   }
   .thired_stage a {
     margin: 0px;
-    margin-top: 1400px;
+    margin-top: 1300px;
   }
   .first_stage a:nth-of-type(1) {
     position: absolute;
     left: 50%; /* 左端を中央に配置 */
     transform: translateX(-50%);
-    top: 2510px;
+    top: 2410px;
     margin-left: -100px;
   }
   .first_stage a:nth-of-type(2) {
     position: absolute;
     left: 50%; /* 左端を中央に配置 */
     transform: translateX(-50%);
-    top: 2510px;
+    top: 2410px;
     margin-left: 100px;
   }
   img[alt='pink_car'] {
@@ -598,7 +601,7 @@ img[alt='pink_car'] {
     position: absolute;
     left: 50%; /* 左端を中央に配置 */
     transform: translateX(-50%);
-    top: 2650px;
+    top: 2550px;
     margin-left: -100px;
   }
 
@@ -606,7 +609,7 @@ img[alt='pink_car'] {
     position: absolute;
     left: 50%; /* 左端を中央に配置 */
     transform: translateX(-50%);
-    top: 2650px;
+    top: 2550px;
     margin-left: 100px;
   }
 
@@ -843,25 +846,25 @@ img[alt='pink_car'] {
 
     .selected {
       position: absolute;
-      top: 2165px;
+      top: 2065px;
     }
     .result_text {
       position: absolute;
       left: 0;
       right: 0;
-      top: 2200px;
+      top: 2100px;
     }
 
     .first_stage a:nth-of-type(1) {
       position: absolute;
-      top: 2400px;
+      top: 2300px;
       left: 50%; /* 左端を中央に配置 */
       transform: translateX(-50%);
       margin-left: -75px;
     }
     .first_stage a:nth-of-type(2) {
       position: absolute;
-      top: 2400px;
+      top: 2300px;
       left: 50%; /* 左端を中央に配置 */
       transform: translateX(-50%);
       margin-left: 75px;
@@ -873,7 +876,7 @@ img[alt='pink_car'] {
     .selectedImg a:nth-of-type(1) {
       position: absolute;
 
-      top: 2550px;
+      top: 2450px;
       left: 50%; /* 左端を中央に配置 */
       transform: translateX(-50%);
       margin-left: -75px;
@@ -881,14 +884,14 @@ img[alt='pink_car'] {
 
     .selectedImg a:nth-of-type(2) {
       position: absolute;
-      top: 2550px;
+      top: 2450px;
       left: 50%; /* 左端を中央に配置 */
       transform: translateX(-50%);
       margin-left: 75px;
     }
     .thired_stage a {
       margin: 0px;
-      margin-top: 1310px;
+      margin-top: 1210px;
     }
 
     .thired_stage a:nth-of-type(1) {
@@ -1009,6 +1012,9 @@ img[alt='pink_car'] {
     .clip_re button:hover {
       opacity: 0.7;
       transition: 0.3s;
+    }
+    #clip_after {
+      margin-bottom: -100px;
     }
   }
 }
