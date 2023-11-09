@@ -370,6 +370,7 @@ img[alt='pink_car'] {
   right: 0;
   text-align: center;
   margin-top: -25px;
+  display: none;
 }
 
 .clip {
