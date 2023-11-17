@@ -65,7 +65,7 @@ a:hover {
     font-size: 25px;
   }
   strong {
-    font-size: 20px;
+    font-size: 16px;
     color: rgb(95, 86, 216);
   }
   section h2 {
@@ -96,7 +96,8 @@ a:hover {
     text-align: center;
   }
   p {
-    line-height: 35px;
+    line-height: 25px;
+    font-size: 16px;
   }
   div {
     text-align: center;
