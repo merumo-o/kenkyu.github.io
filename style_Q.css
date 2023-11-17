@@ -15,6 +15,7 @@ section {
   max-width: 950px;
   background-color: white;
   border-radius: 50px;
+  font-size: 18px;
 }
 
 section h1 {
@@ -22,7 +23,7 @@ section h1 {
   font-size: 30px;
 }
 strong {
-  font-size: 20px;
+  font-size: 18px;
   color: rgb(95, 86, 216);
 }
 section h2 {
@@ -47,7 +48,14 @@ a:hover {
   margin: 0 auto;
   text-align: center;
 }
-
+.color {
+  background-color: rgb(242, 250, 233);
+  padding: 15px;
+}
+.color2 {
+  background-color: rgba(235, 236, 253, 0.514);
+  padding: 15px;
+}
 @media screen and (max-width: 640px) {
   section {
     padding: 20px;
